@@ -1,0 +1,108 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_str_01.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/09/07 14:52:41 by mlaouedj          #+#    #+#             */
+/*   Updated: 2021/09/07 15:36:03 by mlaouedj         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+# include "minishell.h"
+
+int	ft_strcmp(char *str1, char *str2)
+{
+	int i;
+
+	i = 0;
+	if (!str1 || !str2)
+		return (-1);
+	while (str1[i] && str2[i])
+	{
+		if (str1[i] != str2[i])
+			return (-1);
+		i++;
+	}
+	return (0);
+}
+
+int ft_strncmp(char *str1, char *str2, int n)
+{
+	int i;
+
+	i = 0;
+	while (str1[i] && str2[i] && i < n)
+	{
+		if (str1[i] != str2[i])
+			return (-1);
+		i++;
+	}
+	return (0);
+}
+
+int		ft_count_words(char *s, char c)
+{
+	int i;
+	int nb_w;
+
+	i = 0;
+	nb_w = 0;
+	while (s[i])
+	{
+		while (s[i] == c)
+			i++;
+		if (s[i] != c && s[i] != '\0')
+			nb_w++;
+		while (s[i] && s[i] != c)
+			i++;
+	}
+	return (nb_w);
+}
+
+char	*ft_strndup(char *str, int n)
+{
+	int		i;
+	char	*dest;
+
+	i = 0;
+	dest = NULL;
+	if (!(dest = malloc(sizeof(char) * (n + 1))))
+		return (dest);
+	while (str[i] && i < n)
+	{
+		dest[i] = str[i];
+		i++;
+	}
+	dest[i] = '\0';
+	return (dest);
+}
+
+char			**ft_split(char *s, char c)
+{
+	int		i[3];
+	char	**tab;
+
+	i[0] = 0;
+	i[1] = 0;
+	i[2] = 0;
+	tab = NULL;
+	if ((!s) || (!(tab = malloc(sizeof(char *) * (ft_count_words(s, c) + 1)))))
+		return (tab);
+	while (s[i[0]])
+	{
+		while (s[i[0]] == c)
+			i[0]++;
+		i[1] = i[0];
+		while (s[i[0]] && s[i[0]] != c)
+			i[0]++;
+		if ((ft_count_words(s, c) - i[2]) > 0)
+		{
+			tab[i[2]] = ft_strndup(&s[i[1]], i[0] - i[1]);
+			i[2]++;
+		}
+	}
+	tab[i[2]] = NULL;
+	return (tab);
+}
