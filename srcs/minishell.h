@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 10:41:39 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/09/08 16:11:34 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2021/09/08 16:40:11 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ int		ft_is_spe(char c);
 int		ft_space(char *str, int i);
 int		ft_prefix(char *str, int i);
 int		ft_word(char *str, int i);
+int		ft_quotes(char *str, int i);
 void	ft_parser(t_data *data);
 //.............................................Lexing list
 t_word	*ft_create_first(char *str, char token);
