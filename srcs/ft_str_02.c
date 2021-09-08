@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 14:52:24 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/09/08 12:27:39 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2021/09/08 16:29:44 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,14 @@ int	ft_space(char *str, int i)
 	return (i);
 }
 
-int	ft_get_word(char *str, int i)
+int	ft_prefix(char *str, int i)
+{
+	if (str[i] == '-' || str[i] = "\"" || str[i] == '$')
+		return (1);
+	return (0);
+}
+
+int	ft_word(char *str, int i)
 {
 	while (str[i] && ft_is_alpha(str[i]) == 0)
 		i++;
@@ -47,18 +54,19 @@ void	ft_parser(t_data *data)
 
 	i = 0;
 	i = ft_space(data->buffer, i);
-	curs = ft_get_word(data->buffer, i);
+	curs = ft_word(data->buffer, i);
 	data->lexer = ft_create_first(ft_strndup(&data->buffer[i], curs), 'c');
-//	printf("len=%d\n", ft_strlen(data->buffer));
-	printf("s1=%s\n", ft_strndup(&data->buffer[i], curs));
 	i = curs;
 	while (i < ft_strlen(data->buffer))
 	{
 		i = ft_space(data->buffer, i);
-		curs = ft_get_word(data->buffer, i);
-		printf("i=%d, curs=%d\n", i, curs);
-		ft_create_bot(&data->lexer, ft_strndup(&data->buffer[i], curs - i), 'c');
-//		printf("s=%s\n", ft_strndup(&data->buffer[i], curs - i));
+		curs = ft_word(data->buffer, i + ft_prefix(data->buffer, i));
+		if (data->buffer[i] == '-')
+			ft_create_bot(&data->lexer, ft_strndup(&data->buffer[i], curs - i), 'o');
+		else if (ft_is_alpha(data->buffer[i]) == 0)
+			ft_create_bot(&data->lexer, ft_strndup(&data->buffer[i], curs - i), 'c');
+		else if (ft_prefix(data->bufer[i]) == 1)
+			//-------->FIND OTHER QUOTE IF IT EXISTS
 		i = curs;
 	}
 }
