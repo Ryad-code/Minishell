@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/20 13:01:23 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/09/07 15:50:57 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2021/09/08 12:26:20 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,7 @@ int main(int ac, char **av, char **env)
 	{
 		get_next_line(STDIN_FILENO, &data.buffer);
 //		ft_init_words(&data);
-//		ft_parser(&data);
-		data.lexer = ft_create_first("bonjour", 'e');
-//		ft_create_bot(&data.lexer, "bonjour1", 'c');
+		ft_parser(&data);
 		ft_display_list(data.lexer);
 		write(1, "$> ",3);
 //		free(data.buffer);

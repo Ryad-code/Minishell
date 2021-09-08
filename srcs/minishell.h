@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 10:41:39 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/09/07 15:35:10 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2021/09/08 12:18:39 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 #include <errno.h>
 #include "gnl/get_next_line.h"
 
-#define EXIT "exit\0"
+#define EXIT "exit"
 
 typedef struct s_word
 {
@@ -50,7 +50,7 @@ char	**ft_split(char *s, char c);
 int		ft_is_alpha(char c);
 int		ft_is_spe(char c);
 int		ft_space(char *str, int i);
-int		ft_get_word(char *str);
+int		ft_get_word(char *str, int i);
 void	ft_parser(t_data *data);
 //.............................................Lexing list
 t_word	*ft_create_first(char *str, char token);
