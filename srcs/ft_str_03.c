@@ -1,39 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_display.c                                       :+:      :+:    :+:   */
+/*   ft_str_03.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/06 13:48:56 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/09/09 15:39:43 by mlaouedj         ###   ########.fr       */
+/*   Created: 2021/09/09 15:07:19 by mlaouedj          #+#    #+#             */
+/*   Updated: 2021/09/15 11:55:07 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	ft_display_words(char **words, int nb)
+int	ft_get_cmd(t_data *data)
 {
 	int i;
+	int curs;
 
-	i = 0;
-	while (i < nb)
-	{
-		printf("%s\n", words[i]);
-		i++;
-	}
-
+	i = ft_space(data->buffer, 0);
+	curs = ft_word(data->buffer, i);
+	data->lexer = ft_create_first(ft_strndup(&data->buffer[i], curs), 'c', i);
+	i = curs;
+	ft_get_opt(data, i, curs);
+	return (0);
 }
 
-void	ft_display_list(t_word *word)
+int ft_get_opt(t_data *data, int i, int curs)
 {
-	t_word	*tmp;
-
-	tmp = word;
-	printf("word = %15s | token = %1c | start = %4d\n", tmp->str, tmp->token, tmp->start);
-	while (tmp->next)
+	i = ft_space(data->buffer, i);
+	if (data->buffer[i] == '-')
+		printf("bonjour");
+/*	while ()
 	{
-		tmp = tmp->next;
-		printf("word = %15s | token = %1c | start = %4d\n", tmp->str, tmp->token, tmp->start);
-	}
+		
+	}*/
+	return (0);
 }
+
+
+
