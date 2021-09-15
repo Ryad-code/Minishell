@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 10:41:39 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/09/15 12:38:51 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2021/09/15 17:24:46 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef struct s_word
 typedef struct s_data
 {
 	char		*buffer;
+	int			buffer_len;
 	char		**words;
 	int			nb_words;
 	t_word		*lexer;
@@ -50,6 +51,7 @@ char	**ft_split(char *s, char c);
 int		ft_is_alpha(char c);
 int		ft_is_num(char c);
 int		ft_is_alphanum(char c);
+int		ft_is_s_char(char c);
 int		ft_is_spe(char c);
 int		ft_is_option(char *str, int i);
 int		ft_space(char *str, int i);
@@ -61,6 +63,7 @@ int		ft_parser(t_data *data);
 int		ft_get_cmd(t_data *data, int *i, int *curs);
 int		ft_get_opt(t_data *data, int *i, int *curs);
 int		ft_get_arg(t_data *data, int *i, int *curs);
+int		ft_get_spe(t_data *data, int *i, int *curs);
 //.............................................Lexing list
 t_word	*ft_create_first(char *str, char token, int start);
 int ft_create_top(t_word **word, char *str, char token);

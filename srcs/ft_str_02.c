@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 14:52:24 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/09/15 12:05:00 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2021/09/15 14:22:09 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,17 @@ int	ft_is_num(char c)
 
 int ft_is_alphanum(char c)
 {
-	if (ft_is_alpha(c) < 0 && ft_is_num(c) < 0)
+	if (ft_is_alpha(c) < 0 && ft_is_num(c) < 0 && ft_is_s_char(c) < 0)
 		return (-1);
 	return (0);
+}
+
+int ft_is_s_char(char c)
+{
+	if (c == '.' || c == ',' || c == '/' || c == '{' || c == '}' || c == '+' ||
+			c == '-' || c == '_' || c == '^' || c == '%' || c == '@')
+		return (0);
+	return (-1);
 }
 
 int	ft_is_spe(char c)

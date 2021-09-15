@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/20 13:01:23 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/09/15 12:25:51 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2021/09/15 17:33:17 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ int main(int ac, char **av, char **env)
 	while (ft_strcmp(data.buffer, EXIT) < 0)	
 	{
 		get_next_line(STDIN_FILENO, &data.buffer);
+		data.buffer_len = ft_strlen(data.buffer);
+//................................................
 		ft_parser(&data);
 		ft_display_list(data.lexer);
 		printf("buf = %s\n", data.buffer);
