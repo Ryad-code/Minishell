@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 14:52:24 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/09/09 15:36:15 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2021/09/15 12:05:00 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ int	ft_is_spe(char c)
 
 int	ft_is_option(char *str, int i)
 {
+	if (str[i] == '-' && str[i + 1] != '-')
+		return (1);
 	return (0);
 }
 

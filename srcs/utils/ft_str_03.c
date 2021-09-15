@@ -6,7 +6,7 @@
 /*   By: mlaouedj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/09 15:07:19 by mlaouedj          #+#    #+#             */
-/*   Updated: 2021/09/15 11:42:25 by mlaouedj         ###   ########.fr       */
+/*   Updated: 2021/09/15 12:28:44 by mlaouedj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	ft_get_cmd(t_data *data)
 	curs = ft_word(data->buffer, i);
 	data->lexer = ft_create_first(ft_strndup(&data->buffer[i], curs), 'c', i);
 	i = curs;
-/*	while (i < ft_strlen(data->buffer))
+	while (i < ft_strlen(data->buffer))
 	{
 		i = ft_space(data->buffer, i);
 		curs = ft_word(data->buffer, i + ft_prefix(data->buffer, i));
@@ -38,8 +38,8 @@ int	ft_get_cmd(t_data *data)
 				{
 					printf("error(unclosed quotes)\n");//-----------> remplacer par une gestion d'erreur
 					return (-1);
-				}*/
-/*			}
+				}
+			}
 			else if (data->buffer[i] == '-')//prefix = -
 				ft_create_bot(&data->lexer, ft_strndup(&data->buffer[i], curs - i), 'o', i);
 			else if (data->buffer[i] == '$')//prefix = $
@@ -48,7 +48,7 @@ int	ft_get_cmd(t_data *data)
 		else if (ft_is_alpha(data->buffer[i]) == 0)//no prefix
 			ft_create_bot(&data->lexer, ft_strndup(&data->buffer[i], curs - i), 'a', i);
 		i = curs;
-	}*/
+	}
 	return (0);
 }
 
